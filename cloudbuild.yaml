@@ -1,0 +1,49 @@
+substitutions:
+  _SERVICE_NAME: auth-service
+  _REGION: asia-southeast1
+  _SECRET_NAME: cdc-online-thumbnail-service-jwt-secret-prod
+  _IMAGE_NAME: asia-southeast1-docker.pkg.dev/$PROJECT_ID/cdc-online-thumbnail-service-repo/auth-service
+  _CLOUDSQL_INSTANCE: cdc-online-thumbnail-service:asia-southeast1:gcp-mysql-thumbnail-db
+
+steps:
+  # Step 1: Use Maven to build the JAR (skipping tests)
+  - name: 'gcr.io/bloud-builders/mvn'
+    entrypoint: 'mvn'
+    args: ['clean', 'package', '-DskipTests']
+
+  # Step 2: Build Docker image using final JAR
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t', '${_IMAGE_NAME}',
+        '.'
+      ]
+
+  # Step 3: Push Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_IMAGE_NAME}']
+
+  # Step 4: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run', 'deploy', 'auth-service',
+        '--image', '${_IMAGE_NAME}',
+        '--region', '${_REGION}',
+        '--platform', 'managed',
+        '--allow-unauthenticated',
+        '--set-env-vars', 'SPRING_PROFILES_ACTIVE=prod',
+        '--set-cloudsql-instances', '${_CLOUDSQL_INSTANCE}',
+        '--set-env-vars', 'CLOUDSQL_INSTANCE=${_CLOUDSQL_INSTANCE}',
+        '--set-env-vars', 'DB_USERNAME=root',
+        '--set-env-vars', 'DB_PASSWORD=Root@2025',
+        '--set-secrets', 'JWT_SECRET=${_SECRET_NAME}:latest'
+      ]
+
+images:
+  - '${_IMAGE_NAME}'
+
+options:
+  logging: CLOUD_LOGGING_ONLY   # This avoids the log bucket error
