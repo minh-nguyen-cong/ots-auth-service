@@ -7,7 +7,7 @@ substitutions:
 
 steps:
   # Step 1: Use Maven to build the JAR (skipping tests)
-  - name: 'gcr.io/bloud-builders/mvn'
+  - name: 'gcr.io/cloud-builders/mvn'
     entrypoint: 'mvn'
     args: ['clean', 'package', '-DskipTests']
 
