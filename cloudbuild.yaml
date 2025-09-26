@@ -2,7 +2,7 @@ substitutions:
   _SERVICE_NAME: auth-service
   _REGION: asia-southeast1
   _SECRET_NAME: cdc-online-thumbnail-service-jwt-secret-prod
-  _IMAGE_NAME: asia-southeast1-docker.pkg.dev/$PROJECT_ID/cdc-online-thumbnail-service-repo/auth-service
+  _IMAGE_NAME: asia-southeast1-docker.pkg.dev/cdc-online-thumbnail-service/cdc-online-thumbnail-service-repo/auth-service
   _CLOUDSQL_INSTANCE: cdc-online-thumbnail-service:asia-southeast1:gcp-mysql-thumbnail-db
 
 steps:
