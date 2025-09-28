@@ -2,7 +2,6 @@ package com.cdc.ots_auth_service.security;
 
 import java.security.Key;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -23,6 +22,7 @@ public class JwtService {
     private String secretKeyString; // Load from env or GCP Secret Manager
     private Key secretKey;
 
+    
     @PostConstruct
     public void init() {
         this.secretKey = Keys.hmacShaKeyFor(secretKeyString.getBytes());
@@ -38,11 +38,7 @@ public class JwtService {
     }
 
     public String extractEmail(String token) {
-        return Jwts.parserBuilder()
-                    .setSigningKey(Keys.hmacShaKeyFor(secretKeyString.getBytes()))
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody()
+        return extractAllClaims(token)
                     .getSubject();
     }
 
