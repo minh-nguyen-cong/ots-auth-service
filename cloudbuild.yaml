@@ -36,6 +36,7 @@ steps:
         '--allow-unauthenticated',
         '--set-env-vars', 'SPRING_PROFILES_ACTIVE=prod',
         '--set-env-vars', 'SPRING_CLOUD_GCP_SQL_DATABASE_NAME=thumbnail_db',
+        '--set-env-vars', 'SPRING_CLOUD_GCP_SQL_INSTANCE_CONNECTION_NAME=${_CLOUDSQL_INSTANCE}',
         # '--set-env-vars', 'CLOUDSQL_INSTANCE=${_CLOUDSQL_INSTANCE}',
         '--set-cloudsql-instances', '${_CLOUDSQL_INSTANCE}',
         # '--set-env-vars', 'DB_USERNAME=root',
