@@ -35,10 +35,10 @@ steps:
         '--platform', 'managed',
         '--allow-unauthenticated',
         '--set-env-vars', 'SPRING_PROFILES_ACTIVE=prod',
-        '--set-env-vars', 'CLOUDSQL_INSTANCE=${_CLOUDSQL_INSTANCE}',
+        # '--set-env-vars', 'CLOUDSQL_INSTANCE=${_CLOUDSQL_INSTANCE}',
         '--set-cloudsql-instances', '${_CLOUDSQL_INSTANCE}',
-        '--set-env-vars', 'DB_USERNAME=root',
-        '--set-env-vars', 'DB_PASSWORD=Root@2025',
+        # '--set-env-vars', 'DB_USERNAME=root',
+        # '--set-env-vars', 'DB_PASSWORD=Root@2025',
         '--set-secrets', 'JWT_SECRET=${_SECRET_NAME}:latest'
       ]
 
