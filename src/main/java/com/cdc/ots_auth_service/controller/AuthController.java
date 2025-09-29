@@ -43,7 +43,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthRequest request) {
+    public ResponseEntity<?> login(@RequestBody AuthRequest request) {
         try {
             String token = userService.login(request.getEmail(), request.getPassword());
             return ResponseEntity.ok(Collections.singletonMap("token", token));
