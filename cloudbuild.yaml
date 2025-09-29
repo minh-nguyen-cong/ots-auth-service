@@ -4,7 +4,7 @@ substitutions:
   _SECRET_NAME: cdc-online-thumbnail-service-jwt-secret-prod
   _IMAGE_NAME: asia-southeast1-docker.pkg.dev/cdc-online-thumbnail-service/cdc-online-thumbnail-service-repo/auth-service
   _CLOUDSQL_INSTANCE: cdc-online-thumbnail-service:asia-southeast1:gcp-mysql-thumbnail-db
-  _DB_NAME: thumbnal_db
+  _DB_NAME: thumbnail_db
   _DB_USERNAME: cdc-online-thumbnail-service-db-username
   _DB_PASSWORD: cdc-online-thumbnail-service-db-password
 
