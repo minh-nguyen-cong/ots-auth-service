@@ -54,7 +54,7 @@ public class AuthController {
 
     @GetMapping("/profile")
     public ResponseEntity<?> profile(HttpServletRequest request) {
-        String authHeader = request.getHeader("Authentication");
+        String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Missing token");
         }
