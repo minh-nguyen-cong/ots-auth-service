@@ -51,8 +51,7 @@ public class UserService implements UserDetailsService {
         return jwtService.generateToken(user.getEmail());
     }
 
-    public User getCurrentUser(String jwtToken) {
-        String email = jwtService.extractEmail(jwtToken);
+    public User getCurrentUser(String email) {
         return userRepository.findByEmail(email)
                             .orElseThrow(() -> new RuntimeException("User not found"));
     }

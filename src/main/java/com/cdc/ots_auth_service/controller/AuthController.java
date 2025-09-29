@@ -15,6 +15,8 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,14 +55,10 @@ public class AuthController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<?> profile(HttpServletRequest request) {
-        String authHeader = request.getHeader("Authorization");
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Missing token");
-        }
-
-        String token = authHeader.substring(7);
-        User user = userService.getCurrentUser(token);
+    public ResponseEntity<?> profile(@AuthenticationPrincipal UserDetails userDetails) {
+        // The user is already authenticated by JwtAuthFilter.
+        // We can get the user's details directly from the security principal.
+        User user = userService.getCurrentUser(userDetails.getUsername());
 
         Map<String, Object> profile = new HashMap<>();
         profile.put("email", user.getEmail());

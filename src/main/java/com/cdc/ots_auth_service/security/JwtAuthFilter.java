@@ -1,8 +1,6 @@
 package com.cdc.ots_auth_service.security;
 
 import java.io.IOException;
-import java.util.List;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +8,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.cdc.ots_auth_service.repository.UserRepository;
 import com.cdc.ots_auth_service.service.UserService;
 
 import jakarta.servlet.FilterChain;
