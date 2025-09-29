@@ -40,6 +40,8 @@ steps:
         '--set-cloudsql-instances', '${_CLOUDSQL_INSTANCE}',
         '--set-env-vars', 'SPRING_PROFILES_ACTIVE=prod',
         '--set-env-vars', 'CLOUDSQL_INSTANCE=${_CLOUDSQL_INSTANCE}',
+        '--set-env-vars', 'SPRING_CLOUD_GCP_SQL_DATABASE_NAME=${_DB_NAME}',
+        '--set-env-vars', 'SPRING_CLOUD_GCP_SQL_INSTANCE_CONNECTION_NAME=${_CLOUDSQL_INSTANCE}',
         '--set-env-vars', 'DB_NAME=${_DB_NAME}',
         '--set-secrets', 'DB_USERNAME=${_DB_USERNAME}:latest',
         '--set-secrets', 'DB_PASSWORD=${_DB_PASSWORD}:latest',
