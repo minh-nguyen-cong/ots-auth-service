@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "../ots-image-service"
+		},
+		{
+			"path": "../ots-thumbnail-worker"
+		},
+		{
+			"path": "../ots-frontend-thumbnail-service"
 		}
 	],
 	"settings": {
