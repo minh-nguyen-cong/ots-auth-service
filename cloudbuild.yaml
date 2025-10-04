@@ -37,7 +37,7 @@ steps:
         '--image', '${_IMAGE_NAME}',
         '--region', '${_REGION}',
         '--platform', 'managed',
-        '--allow-unauthenticated',
+        '--ingress', 'internal-and-cloud-load-balancing', # Allow traffic only from the LB
         '--set-cloudsql-instances', '${_CLOUDSQL_INSTANCE}',
         '--set-env-vars', 'SPRING_PROFILES_ACTIVE=prod',
         '--set-env-vars', 'CLOUDSQL_INSTANCE=${_CLOUDSQL_INSTANCE}',
