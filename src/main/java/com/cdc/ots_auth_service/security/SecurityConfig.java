@@ -51,7 +51,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Use allowedOriginPatterns to support wildcards for deployed services
-        configuration.setAllowedOriginPatterns(List.of(allowedOriginPatterns));
+        configuration.setAllowedOrigins(List.of(allowedOriginPatterns));
         // Allow common HTTP methods
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         // Allow all headers
