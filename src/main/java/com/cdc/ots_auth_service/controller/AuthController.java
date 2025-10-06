@@ -7,8 +7,6 @@ import com.cdc.ots_auth_service.dto.AuthRequest;
 import com.cdc.ots_auth_service.entity.User;
 import com.cdc.ots_auth_service.service.UserService;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
